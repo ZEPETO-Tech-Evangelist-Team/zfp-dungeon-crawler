@@ -1,0 +1,48 @@
+fileFormatVersion: 2
+guid: cb7fd8d75273b8d4da56e5e950d4c8f6
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst Configs_1 = require(\"./Configs\");\r\nclass
+    GateComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.ClosePosition = null;\r\n       
+    this.OpenPosition = null;\r\n        this.GateSpeed = null;\r\n        this._fraction
+    = null;\r\n        this._doorState = null;\r\n    }\r\n    SetDoorState(doorState)
+    {\r\n        this._doorState = doorState;\r\n    }\r\n    Start() {\r\n       
+    this._doorState = Configs_1.DoorState.CLOSE;\r\n        this._fraction = 0;\r\n   
+    }\r\n    Update() {\r\n        switch (this._doorState) {\r\n            case
+    Configs_1.DoorState.OPEN:\r\n                this.Open();\r\n               
+    break;\r\n            case Configs_1.DoorState.CLOSE:\r\n                this.Close();\r\n               
+    break;\r\n            case Configs_1.DoorState.IDLE:\r\n                break;\r\n       
+    }\r\n    }\r\n    SetOpen() {\r\n        this._doorState = Configs_1.DoorState.IDLE;\r\n       
+    this._fraction = 0;\r\n        this.transform.localPosition = this.OpenPosition;\r\n   
+    }\r\n    SetClose() {\r\n        this._doorState = Configs_1.DoorState.IDLE;\r\n       
+    this._fraction = 0;\r\n        this.transform.localPosition = this.ClosePosition;\r\n   
+    }\r\n    Open() {\r\n        this._doorState = Configs_1.DoorState.OPEN;\r\n       
+    if (this._fraction < 1) {\r\n            this._fraction += UnityEngine_1.Time.deltaTime
+    * this.GateSpeed;\r\n            this.transform.localPosition = UnityEngine_1.Vector3.Lerp(this.ClosePosition,
+    this.OpenPosition, this._fraction);\r\n        }\r\n    }\r\n    Close() {\r\n       
+    this._doorState = Configs_1.DoorState.CLOSE;\r\n        if (this._fraction <
+    1) {\r\n            this._fraction += UnityEngine_1.Time.deltaTime * this.GateSpeed;\r\n           
+    this.transform.localPosition = UnityEngine_1.Vector3.Lerp(this.OpenPosition,
+    this.ClosePosition, this._fraction);\r\n        }\r\n    }\r\n}\r\nexports.default
+    = GateComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiR2F0ZUNvbXBvbmVudC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkdhdGVDb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSw2Q0FBNkQ7QUFDN0QsaURBQXFEO0FBRXJELHVDQUFzQztBQUV0QyxNQUFxQixhQUFjLFNBQVEscUNBQXFCO0lBQWhFOztRQUNXLGtCQUFhLEdBQWEsSUFBSSxDQUFDO1FBQy9CLGlCQUFZLEdBQWEsSUFBSSxDQUFDO1FBQzlCLGNBQVMsR0FBWSxJQUFJLENBQUM7UUFDekIsY0FBUyxHQUFZLElBQUksQ0FBQztRQUMxQixlQUFVLEdBQWUsSUFBSSxDQUFDO0lBcUQxQyxDQUFDO0lBbkRHLFlBQVksQ0FBQyxTQUFxQjtRQUM5QixJQUFJLENBQUMsVUFBVSxHQUFHLFNBQVMsQ0FBQztJQUNoQyxDQUFDO0lBRUQsS0FBSztRQUNELElBQUksQ0FBQyxVQUFVLEdBQUcsbUJBQVMsQ0FBQyxLQUFLLENBQUM7UUFDbEMsSUFBSSxDQUFDLFNBQVMsR0FBRyxDQUFDLENBQUM7SUFDdkIsQ0FBQztJQUVELE1BQU07UUFDRixRQUFRLElBQUksQ0FBQyxVQUFVLEVBQUU7WUFDckIsS0FBSyxtQkFBUyxDQUFDLElBQUk7Z0JBQ2YsSUFBSSxDQUFDLElBQUksRUFBRSxDQUFDO2dCQUNaLE1BQU07WUFDVixLQUFLLG1CQUFTLENBQUMsS0FBSztnQkFDaEIsSUFBSSxDQUFDLEtBQUssRUFBRSxDQUFDO2dCQUNiLE1BQU07WUFDVixLQUFLLG1CQUFTLENBQUMsSUFBSTtnQkFFZixNQUFNO1NBQ2I7SUFDTCxDQUFDO0lBRUQsT0FBTztRQUNILElBQUksQ0FBQyxVQUFVLEdBQUcsbUJBQVMsQ0FBQyxJQUFJLENBQUM7UUFDakMsSUFBSSxDQUFDLFNBQVMsR0FBRyxDQUFDLENBQUM7UUFDbkIsSUFBSSxDQUFDLFNBQVMsQ0FBQyxhQUFhLEdBQUcsSUFBSSxDQUFDLFlBQVksQ0FBQztJQUNyRCxDQUFDO0lBRUQsUUFBUTtRQUNKLElBQUksQ0FBQyxVQUFVLEdBQUcsbUJBQVMsQ0FBQyxJQUFJLENBQUM7UUFDakMsSUFBSSxDQUFDLFNBQVMsR0FBRyxDQUFDLENBQUM7UUFDbkIsSUFBSSxDQUFDLFNBQVMsQ0FBQyxhQUFhLEdBQUcsSUFBSSxDQUFDLGFBQWEsQ0FBQztJQUN0RCxDQUFDO0lBRUQsSUFBSTtRQUNBLElBQUksQ0FBQyxVQUFVLEdBQUcsbUJBQVMsQ0FBQyxJQUFJLENBQUM7UUFDdkMsSUFBSSxJQUFJLENBQUMsU0FBUyxHQUFHLENBQUMsRUFBRTtZQUN2QixJQUFJLENBQUMsU0FBUyxJQUFJLGtCQUFJLENBQUMsU0FBUyxHQUFHLElBQUksQ0FBQyxTQUFTLENBQUM7WUFDbEQsSUFBSSxDQUFDLFNBQVMsQ0FBQyxhQUFhLEdBQUcscUJBQU8sQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLGFBQWEsRUFBRSxJQUFJLENBQUMsWUFBWSxFQUFFLElBQUksQ0FBQyxTQUFTLENBQUMsQ0FBQztTQUNuRztJQUNDLENBQUM7SUFFRCxLQUFLO1FBQ0QsSUFBSSxDQUFDLFVBQVUsR0FBRyxtQkFBUyxDQUFDLEtBQUssQ0FBQztRQUN4QyxJQUFJLElBQUksQ0FBQyxTQUFTLEdBQUcsQ0FBQyxFQUFFO1lBQ3ZCLElBQUksQ0FBQyxTQUFTLElBQUksa0JBQUksQ0FBQyxTQUFTLEdBQUcsSUFBSSxDQUFDLFNBQVMsQ0FBQztZQUNsRCxJQUFJLENBQUMsU0FBUyxDQUFDLGFBQWEsR0FBRyxxQkFBTyxDQUFDLElBQUksQ0FBQyxJQUFJLENBQUMsWUFBWSxFQUFFLElBQUksQ0FBQyxhQUFhLEVBQUUsSUFBSSxDQUFDLFNBQVMsQ0FBQyxDQUFDO1NBQ25HO0lBQ0MsQ0FBQztDQUVKO0FBMURELGdDQTBEQyJ9","assetPath":"Assets/Scripts/GateComponent.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"ClosePosition","type":"UnityEngine.Vector3","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"OpenPosition","type":"UnityEngine.Vector3","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"GateSpeed","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"GateComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: e9b20037917c287a08a148b97117ba21
+  onlyWriteTrigger: 0

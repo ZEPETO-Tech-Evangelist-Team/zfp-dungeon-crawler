@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: b7bcf219e408155438d5d9a11585838d
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
+    Configs_1 = require(\"./Configs\");\r\nconst Main_1 = require(\"../Main\");\r\nclass
+    LevelEndComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    OnTriggerEnter(other)
+    {\r\n        if (other.gameObject.tag === \"PLAYER\") {\r\n            Main_1.default.instance.SetGameState(Configs_1.GameState.END_FIGHTING);\r\n       
+    }\r\n    }\r\n}\r\nexports.default = LevelEndComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGV2ZWxFbmRDb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJMZXZlbEVuZENvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUNBLGlEQUFxRDtBQUNyRCx1Q0FBc0M7QUFDdEMsa0NBQTJCO0FBRTNCLE1BQXFCLGlCQUFrQixTQUFRLHFDQUFxQjtJQUVoRSxjQUFjLENBQUMsS0FBZ0I7UUFFM0IsSUFBSSxLQUFLLENBQUMsVUFBVSxDQUFDLEdBQUcsS0FBSyxRQUFRLEVBQUU7WUFDbkMsY0FBSSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsbUJBQVMsQ0FBQyxZQUFZLENBQUMsQ0FBQztTQUN0RDtJQUNMLENBQUM7Q0FFSjtBQVRELG9DQVNDIn0=","assetPath":"Assets/Scripts/LevelEndComponent.ts","manifest":{"properties":[],"name":"LevelEndComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 74ba5d55fbccd45b42823f2c74176890
+  onlyWriteTrigger: 0

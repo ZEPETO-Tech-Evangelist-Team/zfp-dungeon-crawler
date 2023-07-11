@@ -1,0 +1,36 @@
+fileFormatVersion: 2
+guid: d8d608619dfa2394597ce9b25d75881c
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst ZEPETO_World_1 = require(\"ZEPETO.World\");\r\nclass
+    ClientStarter extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.HasLocalPlayerLoaded = false;\r\n       
+    this.localPlayer = null;\r\n    }\r\n    Start() {\r\n        // Grab the user
+    id specified from logging into zepeto through the editor. \r\n        $extension(\"ZEPETO.Character.Controller.ZepetoPlayersExtension\").CreatePlayerWithUserId(ZEPETO_Character_Controller_1.ZepetoPlayers.instance,
+    ZEPETO_World_1.WorldService.userId, new ZEPETO_Character_Controller_1.SpawnInfo(),
+    true);\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.OnAddedLocalPlayer.AddListener(()
+    => {\r\n            this.HasLocalPlayerLoaded = true;\r\n            this.localPlayer
+    = ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer;\r\n           
+    this.localPlayer.zepetoPlayer.character.gameObject.tag = \"PLAYER\";\r\n       
+    });\r\n    }\r\n    Update() {\r\n    }\r\n}\r\nexports.default = ClientStarter;\r\n//#
+    sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2xpZW50U3RhcnRlci5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNsaWVudFN0YXJ0ZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFDQSw2RUFBa0c7QUFDbEcsaURBQXFEO0FBQ3JELCtDQUE0QztBQUU1QyxNQUFxQixhQUFjLFNBQVEscUNBQXFCO0lBQWhFOztRQUNXLHlCQUFvQixHQUFhLEtBQUssQ0FBQztRQUN0QyxnQkFBVyxHQUFpQixJQUFJLENBQUM7SUFnQjdDLENBQUM7SUFkRyxLQUFLO1FBQ0QsMkVBQTJFO1FBQzNFLGlFQUF1QixzQkFBc0IsQ0FBN0MsMkNBQWEsQ0FBQyxRQUFRLEVBQXdCLDJCQUFZLENBQUMsTUFBTSxFQUFFLElBQUksdUNBQVMsRUFBRSxFQUFFLElBQUksRUFBRTtRQUMxRiwyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxrQkFBa0IsQ0FBQyxXQUFXLENBQUMsR0FBRyxFQUFFO1lBQ3ZELElBQUksQ0FBQyxvQkFBb0IsR0FBRyxJQUFJLENBQUM7WUFFakMsSUFBSSxDQUFDLFdBQVcsR0FBRywyQ0FBYSxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUM7WUFDdEQsSUFBSSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFVBQVUsQ0FBQyxHQUFHLEdBQUcsUUFBUSxDQUFDO1FBQ3RFLENBQUMsQ0FBQyxDQUFDO0lBQ1AsQ0FBQztJQUVELE1BQU07SUFFTixDQUFDO0NBQ0o7QUFsQkQsZ0NBa0JDIn0=","assetPath":"Assets/ClientStarter.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"HasLocalPlayerLoaded","type":"System.Boolean","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"ClientStarter","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 7e0961cdc99941412ecde6b41f25469d
+  onlyWriteTrigger: 0

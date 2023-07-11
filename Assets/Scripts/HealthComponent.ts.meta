@@ -1,0 +1,54 @@
+fileFormatVersion: 2
+guid: 61f55aa15d522cd46a2f7467505de9c6
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst EnemyComponent_1 = require(\"./EnemyComponent\");\r\nconst
+    Main_1 = require(\"../Main\");\r\nconst ProjectileComponent_1 = require(\"./ProjectileComponent\");\r\nconst
+    SharpComponent_1 = require(\"./SharpComponent\");\r\nconst Configs_1 = require(\"./Configs\");\r\nconst
+    TMPro_1 = require(\"TMPro\");\r\nclass HealthComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.HealthUI
+    = null;\r\n        this.HealthText = null;\r\n        this.HealthPower = null;\r\n       
+    this._enemyComponent = null;\r\n    }\r\n    Start() {\r\n        this._enemyComponent
+    = this.gameObject.GetComponent($typeof(EnemyComponent_1.default));\r\n       
+    this.HealthPower = Configs_1.PLAYER_STARTING_HEALTH;\r\n    }\r\n    Update()
+    {\r\n        if (this.HealthUI !== null) {\r\n            const camera = Main_1.default.instance.ZepetoCamera;\r\n           
+    this.HealthUI.transform.LookAt(new UnityEngine_1.Vector3(camera.transform.position.x,
+    this.HealthUI.transform.position.y, camera.transform.position.z));\r\n           
+    this.HealthText.text = this.HealthPower.toString();\r\n        }\r\n    }\r\n   
+    OnTriggerEnter(other) {\r\n        UnityEngine_1.Debug.LogError(\"player hit:
+    \" + this.gameObject.name);\r\n        if (other.gameObject.tag === \"PROJECTILE\")
+    {\r\n            //check for friendly fire\r\n            if (other.gameObject.GetComponent($typeof(ProjectileComponent_1.default)).OwnerType
+    !== this.gameObject.GetComponent($typeof(EnemyComponent_1.default)).EntityType)
+    {\r\n                this.HealthPower -= Configs_1.PROJECTILE_DAMAGE;\r\n               
+    if (this.HealthPower <= 0) {\r\n                    this.Destroy();\r\n               
+    }\r\n            }\r\n        }\r\n        if (other.gameObject.tag === \"SHARP\")
+    {\r\n            //check for friendly fire\r\n            if (other.gameObject.GetComponent($typeof(SharpComponent_1.default)).OwnerType
+    !== this.gameObject.GetComponent($typeof(EnemyComponent_1.default)).EntityType)
+    {\r\n                this.HealthPower -= Configs_1.SHARP_DAMAGE;\r\n               
+    if (this.HealthPower <= 0) {\r\n                    this.Destroy();\r\n               
+    }\r\n            }\r\n        }\r\n    }\r\n    Destroy() {\r\n        UnityEngine_1.Debug.LogError(\"Destroy\");\r\n       
+    switch (this._enemyComponent.EntityType) {\r\n            case Configs_1.EntityType.ENEMY:\r\n               
+    UnityEngine_1.GameObject.Destroy(this.gameObject);\r\n                Main_1.default.instance.LevelManager.EnemyComponents.set(this._enemyComponent.Id,
+    null);\r\n                break;\r\n            case Configs_1.EntityType.PLAYER:\r\n               
+    Main_1.default.instance.LevelManager.RestartGame();\r\n                break;\r\n       
+    }\r\n    }\r\n}\r\nexports.default = HealthComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiSGVhbHRoQ29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiSGVhbHRoQ29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQTJFO0FBQzNFLGlEQUFxRDtBQUNyRCxxREFBOEM7QUFDOUMsa0NBQTJCO0FBQzNCLCtEQUF3RDtBQUN4RCxxREFBOEM7QUFDOUMsdUNBQTJHO0FBQzNHLGlDQUF3QztBQUV4QyxNQUFxQixlQUFnQixTQUFRLHFDQUFxQjtJQUFsRTs7UUFFVyxhQUFRLEdBQWdCLElBQUksQ0FBQztRQUM3QixlQUFVLEdBQXFCLElBQUksQ0FBQztRQUNwQyxnQkFBVyxHQUFZLElBQUksQ0FBQztRQUMzQixvQkFBZSxHQUFvQixJQUFJLENBQUM7SUFvRHBELENBQUM7SUFsREcsS0FBSztRQUNELElBQUksQ0FBQyxlQUFlLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxZQUFZLFNBQUMsd0JBQWMsRUFBRyxDQUFBO1FBQ3JFLElBQUksQ0FBQyxXQUFXLEdBQUcsZ0NBQXNCLENBQUM7SUFDOUMsQ0FBQztJQUVELE1BQU07UUFDRixJQUFJLElBQUksQ0FBQyxRQUFRLEtBQUssSUFBSSxFQUFFO1lBQ3hCLE1BQU0sTUFBTSxHQUFZLGNBQUksQ0FBQyxRQUFRLENBQUMsWUFBWSxDQUFDO1lBQ25ELElBQUksQ0FBQyxRQUFRLENBQUMsU0FBUyxDQUFDLE1BQU0sQ0FBQyxJQUFJLHFCQUFPLENBQUMsTUFBTSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxFQUFFLElBQUksQ0FBQyxRQUFRLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDLEVBQUUsTUFBTSxDQUFDLFNBQVMsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUMxSSxJQUFJLENBQUMsVUFBVSxDQUFDLElBQUksR0FBRyxJQUFJLENBQUMsV0FBVyxDQUFDLFFBQVEsRUFBRSxDQUFDO1NBQ3REO0lBQ0wsQ0FBQztJQUVELGNBQWMsQ0FBQyxLQUFnQjtRQUMzQixtQkFBSyxDQUFDLFFBQVEsQ0FBQyxjQUFjLEdBQUcsSUFBSSxDQUFDLFVBQVUsQ0FBQyxJQUFJLENBQUMsQ0FBQztRQUN0RCxJQUFJLEtBQUssQ0FBQyxVQUFVLENBQUMsR0FBRyxLQUFLLFlBQVksRUFBRTtZQUV2Qyx5QkFBeUI7WUFDekIsSUFBSSxLQUFLLENBQUMsVUFBVSxDQUFDLFlBQVksU0FBQyw2QkFBbUIsR0FBSSxTQUFTLEtBQUssSUFBSSxDQUFDLFVBQVUsQ0FBQyxZQUFZLFNBQUMsd0JBQWMsR0FBSSxVQUFVLEVBQUU7Z0JBQzlILElBQUksQ0FBQyxXQUFXLElBQUksMkJBQWlCLENBQUM7Z0JBQ3RDLElBQUksSUFBSSxDQUFDLFdBQVcsSUFBSSxDQUFDLEVBQUU7b0JBQ3ZCLElBQUksQ0FBQyxPQUFPLEVBQUUsQ0FBQztpQkFDbEI7YUFDSjtTQUNKO1FBRUQsSUFBSSxLQUFLLENBQUMsVUFBVSxDQUFDLEdBQUcsS0FBSyxPQUFPLEVBQUU7WUFFbEMseUJBQXlCO1lBQ3pCLElBQUksS0FBSyxDQUFDLFVBQVUsQ0FBQyxZQUFZLFNBQUMsd0JBQWMsR0FBSSxTQUFTLEtBQUssSUFBSSxDQUFDLFVBQVUsQ0FBQyxZQUFZLFNBQUMsd0JBQWMsR0FBSSxVQUFVLEVBQUU7Z0JBQ3pILElBQUksQ0FBQyxXQUFXLElBQUksc0JBQVksQ0FBQztnQkFDakMsSUFBSSxJQUFJLENBQUMsV0FBVyxJQUFJLENBQUMsRUFBRTtvQkFDdkIsSUFBSSxDQUFDLE9BQU8sRUFBRSxDQUFDO2lCQUNsQjthQUNKO1NBQ0o7SUFDTCxDQUFDO0lBRUQsT0FBTztRQUNILG1CQUFLLENBQUMsUUFBUSxDQUFDLFNBQVMsQ0FBQyxDQUFDO1FBQzFCLFFBQVEsSUFBSSxDQUFDLGVBQWUsQ0FBQyxVQUFVLEVBQUU7WUFDckMsS0FBSyxvQkFBVSxDQUFDLEtBQUs7Z0JBQ2pCLHdCQUFVLENBQUMsT0FBTyxDQUFDLElBQUksQ0FBQyxVQUFVLENBQUMsQ0FBQztnQkFDcEMsY0FBSSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsZUFBZSxDQUFDLEdBQUcsQ0FBQyxJQUFJLENBQUMsZUFBZSxDQUFDLEVBQUUsRUFBRSxJQUFJLENBQUMsQ0FBQztnQkFDbEYsTUFBTTtZQUNOLEtBQUssb0JBQVUsQ0FBQyxNQUFNO2dCQUNsQixjQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxXQUFXLEVBQUUsQ0FBQztnQkFDN0MsTUFBTTtTQUNUO0lBQ0wsQ0FBQztDQUNKO0FBekRELGtDQXlEQyJ9","assetPath":"Assets/Scripts/HealthComponent.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"HealthUI","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"Unity.TextMeshPro","name":"HealthText","type":"TMPro.TextMeshProUGUI","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"HealthPower","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"HealthComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 9e01c84b0aaee3e273169ea0d0783011
+  onlyWriteTrigger: 0

@@ -1,0 +1,32 @@
+fileFormatVersion: 2
+guid: b03189a75449a9b43b245362e46e97be
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_AI_1 = require(\"UnityEngine.AI\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass FollowComponent extends
+    ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor() {\r\n        super(...arguments);\r\n       
+    this.FollowTarget = null;\r\n        this.NavMeshAgent = null;\r\n    }\r\n   
+    Start() {\r\n        this.NavMeshAgent = this.GetComponent($typeof(UnityEngine_AI_1.NavMeshAgent));\r\n   
+    }\r\n    Update() {\r\n        if (ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer
+    !== null) {\r\n            this.NavMeshAgent.SetDestination(ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.transform.position);\r\n       
+    }\r\n    }\r\n}\r\nexports.default = FollowComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRm9sbG93Q29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiRm9sbG93Q29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQ0EsbURBQThDO0FBQzlDLDZFQUE0RDtBQUM1RCxpREFBcUQ7QUFFckQsTUFBcUIsZUFBZ0IsU0FBUSxxQ0FBcUI7SUFBbEU7O1FBQ1csaUJBQVksR0FBZ0IsSUFBSSxDQUFDO1FBQ2pDLGlCQUFZLEdBQWtCLElBQUksQ0FBQztJQVk5QyxDQUFDO0lBVkcsS0FBSztRQUNELElBQUksQ0FBQyxZQUFZLEdBQUcsSUFBSSxDQUFDLFlBQVksU0FBQyw2QkFBWSxFQUFHLENBQUM7SUFDMUQsQ0FBQztJQUVELE1BQU07UUFDRixJQUFJLDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsS0FBSyxJQUFJLEVBQUU7WUFDN0MsSUFBSSxDQUFDLFlBQVksQ0FBQyxjQUFjLENBQUMsMkNBQWEsQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLFlBQVksQ0FBQyxTQUFTLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FBQyxDQUFDO1NBQ2xIO0lBQ0wsQ0FBQztDQUVKO0FBZEQsa0NBY0MifQ==","assetPath":"Assets/Scripts/FollowComponent.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"FollowTarget","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.AIModule","name":"NavMeshAgent","type":"UnityEngine.AI.NavMeshAgent","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"FollowComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 6da391c5609aaf467821b7801098d9e5
+  onlyWriteTrigger: 0

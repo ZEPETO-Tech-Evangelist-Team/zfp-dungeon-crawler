@@ -1,0 +1,74 @@
+fileFormatVersion: 2
+guid: 61cce0e21cb606941b62325824137451
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst LevelComponent_1 = require(\"./LevelComponent\");\r\nconst
+    ZEPETO_Character_Controller_1 = require(\"ZEPETO.Character.Controller\");\r\nconst
+    Configs_1 = require(\"./Configs\");\r\nconst Main_1 = require(\"../Main\");\r\nconst
+    EnemyComponent_1 = require(\"./EnemyComponent\");\r\nconst HealthComponent_1
+    = require(\"./HealthComponent\");\r\nclass LevelManager extends ZEPETO_Script_1.ZepetoScriptBehaviour
+    {\r\n    constructor() {\r\n        super(...arguments);\r\n        this.LevelGameObjects
+    = null;\r\n        this._levelComponents = null;\r\n        this._currentLevelComponentIndex
+    = null;\r\n        this.EnemyComponents = null;\r\n        this._hasKilledAllEnemies
+    = null;\r\n    }\r\n    CustomStart() {\r\n        this._hasKilledAllEnemies
+    = false;\r\n        this._levelComponents = [];\r\n        for (let i = 0; i
+    < this.LevelGameObjects.length; i++) {\r\n            this._levelComponents.push(this.LevelGameObjects[i].GetComponent($typeof(LevelComponent_1.default)));\r\n           
+    this._levelComponents[i].GateComponent.SetClose();\r\n        }\r\n        const
+    currentLevelComponent = this.FindCurrentLevelComponentByLevel(Main_1.default.instance.CurrentLevel);\r\n       
+    ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Teleport(currentLevelComponent.PlayerSpawnPoint.position,
+    UnityEngine_1.Quaternion.identity);\r\n        this.EnemyComponents = new Map();\r\n       
+    this.InstantiateEnemies();\r\n    }\r\n    CustomUpdate() {\r\n        if (this._hasKilledAllEnemies
+    === false) {\r\n            this.CheckIfAllEnemiesKilled();\r\n        }\r\n   
+    }\r\n    RestartGame() {\r\n        //reset player health\r\n        ZEPETO_Character_Controller_1.ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.gameObject.GetComponent($typeof(HealthComponent_1.default)).HealthPower
+    = Configs_1.PLAYER_STARTING_HEALTH;\r\n        //reset level to first level\r\n       
+    Main_1.default.instance.CurrentLevel = 0;\r\n        //clear enemy game objects\r\n       
+    this.EnemyComponents.forEach(element => {\r\n            if (element !== null)
+    {\r\n                UnityEngine_1.GameObject.Destroy(element.gameObject);\r\n           
+    }\r\n        });\r\n        Main_1.default.instance.SetGameState(Configs_1.GameState.START_FIGHTING);\r\n   
+    }\r\n    CheckIfAllEnemiesKilled() {\r\n        let aliveCount = 0;\r\n       
+    this.EnemyComponents.forEach(element => {\r\n            if (element !== null)
+    {\r\n                aliveCount++;\r\n            }\r\n            if (aliveCount
+    === 0) {\r\n                this._hasKilledAllEnemies = true;\r\n               
+    UnityEngine_1.Debug.LogError(\"Killed All Enemies\");\r\n                this._levelComponents[this._currentLevelComponentIndex].GateComponent.SetClose();\r\n               
+    this._levelComponents[this._currentLevelComponentIndex].GateComponent.SetDoorState(Configs_1.DoorState.OPEN);\r\n           
+    }\r\n        });\r\n    }\r\n    FindCurrentLevelComponentByLevel(level) {\r\n       
+    for (let i = 0; i < this._levelComponents.length; i++) {\r\n            if (this._levelComponents[i].LevelType
+    === Main_1.default.instance.Configs.Levels[level].LevelType) {\r\n               
+    this._currentLevelComponentIndex = i;\r\n                return this._levelComponents[this._currentLevelComponentIndex];\r\n           
+    }\r\n        }\r\n        UnityEngine_1.Debug.LogError(\"[LevelManager] [FindCurrentLevelComponentByLevel]
+    returned null, this should NOT happen!!!\");\r\n        return null;\r\n    }\r\n   
+    InstantiateEnemies() {\r\n        const currentLevel = Main_1.default.instance.CurrentLevel;\r\n       
+    let currentEnemyIndex = 0;\r\n        for (let i = 0; i < Main_1.default.instance.Configs.Levels[currentLevel].EnemyTypes.length;
+    i++) {\r\n            const enemyType = Main_1.default.instance.Configs.Levels[currentLevel].EnemyTypes[i];\r\n           
+    let enemyGO = null;\r\n            const spawnPosition = this._levelComponents[this._currentLevelComponentIndex].EnemySpawnPoints[i].position;\r\n           
+    switch (enemyType) {\r\n                case Configs_1.EnemyType.MELEE:\r\n                   
+    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"MeleeEnemy\"),
+    spawnPosition, UnityEngine_1.Quaternion.identity);\r\n                    break;\r\n               
+    case Configs_1.EnemyType.RANGE:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"RangeEnemy\"),
+    spawnPosition, UnityEngine_1.Quaternion.identity);\r\n                    break;\r\n               
+    case Configs_1.EnemyType.TOWER:\r\n                    enemyGO = UnityEngine_1.GameObject.Instantiate(UnityEngine_1.Resources.Load(\"TowerEnemy\"),
+    spawnPosition, UnityEngine_1.Quaternion.identity);\r\n                    break;\r\n           
+    }\r\n            if (enemyGO !== null) {\r\n                const enemyComponent
+    = enemyGO.GetComponent($typeof(EnemyComponent_1.default));\r\n               
+    enemyComponent.Id = i;\r\n                this.EnemyComponents.set(i, enemyComponent);\r\n           
+    }\r\n        }\r\n    }\r\n}\r\nexports.default = LevelManager;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGV2ZWxNYW5hZ2VyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiTGV2ZWxNYW5hZ2VyLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsNkNBQStFO0FBQy9FLGlEQUFxRDtBQUNyRCxxREFBOEM7QUFDOUMsNkVBQTREO0FBQzVELHVDQUErRjtBQUMvRixrQ0FBMkI7QUFDM0IscURBQThDO0FBQzlDLHVEQUFnRDtBQUVoRCxNQUFxQixZQUFhLFNBQVEscUNBQXFCO0lBQS9EOztRQUNXLHFCQUFnQixHQUFrQixJQUFJLENBQUM7UUFFdEMscUJBQWdCLEdBQXNCLElBQUksQ0FBQztRQUMzQyxnQ0FBMkIsR0FBVyxJQUFJLENBQUM7UUFFNUMsb0JBQWUsR0FBaUMsSUFBSSxDQUFDO1FBRXBELHlCQUFvQixHQUFhLElBQUksQ0FBQztJQXlHbEQsQ0FBQztJQXZHRyxXQUFXO1FBQ1AsSUFBSSxDQUFDLG9CQUFvQixHQUFHLEtBQUssQ0FBQztRQUNsQyxJQUFJLENBQUMsZ0JBQWdCLEdBQUcsRUFBRSxDQUFDO1FBRTNCLEtBQUssSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsR0FBRyxJQUFJLENBQUMsZ0JBQWdCLENBQUMsTUFBTSxFQUFFLENBQUMsRUFBRSxFQUFFO1lBQ25ELElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLGdCQUFnQixDQUFDLENBQUMsQ0FBQyxDQUFDLFlBQVksU0FBQyx3QkFBYyxHQUFJLENBQUM7WUFDcEYsSUFBSSxDQUFDLGdCQUFnQixDQUFDLENBQUMsQ0FBQyxDQUFDLGFBQWEsQ0FBQyxRQUFRLEVBQUUsQ0FBQztTQUNyRDtRQUVELE1BQU0scUJBQXFCLEdBQW9CLElBQUksQ0FBQyxnQ0FBZ0MsQ0FBQyxjQUFJLENBQUMsUUFBUSxDQUFDLFlBQVksQ0FBQyxDQUFDO1FBRWpILDJDQUFhLENBQUMsUUFBUSxDQUFDLFdBQVcsQ0FBQyxZQUFZLENBQUMsU0FBUyxDQUFDLFFBQVEsQ0FB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","assetPath":"Assets/Scripts/LevelManager.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"LevelGameObjects","type":"UnityEngine.GameObject[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"LevelManager","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: b08700b76fd295bac9a26adf3fab6a0e
+  onlyWriteTrigger: 0

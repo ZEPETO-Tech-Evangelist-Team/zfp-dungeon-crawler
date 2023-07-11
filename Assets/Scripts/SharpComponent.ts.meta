@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 44ee14160ba08344f919c3a0d6922678
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass
+    SharpComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.OwnerType = null;\r\n    }\r\n   
+    Start() {\r\n    }\r\n}\r\nexports.default = SharpComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiU2hhcnBDb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJTaGFycENvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUdyRCxNQUFxQixjQUFlLFNBQVEscUNBQXFCO0lBQWpFOztRQUNXLGNBQVMsR0FBZ0IsSUFBSSxDQUFDO0lBS3pDLENBQUM7SUFKRyxLQUFLO0lBRUwsQ0FBQztDQUVKO0FBTkQsaUNBTUMifQ==","assetPath":"Assets/Scripts/SharpComponent.ts","manifest":{"properties":[{"assembly":"","name":"OwnerType","type":"EntityType","isArray":false,"initValue":[],"enumKeys":["NONE","PLAYER","ENEMY"],"enumValues":["0","1","2"],"attributes":[]}],"name":"SharpComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 9447ef264a8a8928294c5b2eaf017744
+  onlyWriteTrigger: 0

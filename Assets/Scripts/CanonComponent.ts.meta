@@ -1,0 +1,50 @@
+fileFormatVersion: 2
+guid: f57c43b70903e394fb58b733795826c1
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst ProjectileComponent_1
+    = require(\"./ProjectileComponent\");\r\nconst Configs_1 = require(\"./Configs\");\r\nclass
+    CanonComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.projectile = null;\r\n       
+    this.projectileOrigin = null;\r\n        this.fireRatePerSecond = null;\r\n   
+    }\r\n    Start() {\r\n        UnityEngine_1.Debug.LogError(\"start\");\r\n       
+    this.StartCoroutine(this.FireCoroutine());\r\n    }\r\n    Update() {\r\n       
+    if (UnityEngine_1.Input.GetKeyDown(UnityEngine_1.KeyCode.T)) {\r\n           
+    //this.InstantiateProjectile();\r\n        }\r\n    }\r\n    *FireCoroutine()
+    {\r\n        UnityEngine_1.Debug.LogError(\"coroutine\");\r\n        while (true)
+    {\r\n            yield null;\r\n            this.InstantiateProjectile();\r\n           
+    yield new UnityEngine_1.WaitForSeconds(this.fireRatePerSecond);\r\n        }\r\n   
+    }\r\n    InstantiateProjectile() {\r\n        const projectile = UnityEngine_1.GameObject.Instantiate(this.projectile,
+    this.projectileOrigin.transform.position, UnityEngine_1.Quaternion.identity);\r\n       
+    if (this.gameObject.tag === \"PLAYER\") {\r\n            UnityEngine_1.Debug.LogError(\"is
+    player\");\r\n            const projectileComponent = projectile.GetComponent($typeof(ProjectileComponent_1.default));
+    //.OwnerType = EntityType.PLAYER;\r\n            projectileComponent.OwnerType
+    = Configs_1.EntityType.PLAYER;\r\n            projectileComponent.ProjectileMaterial.material
+    = UnityEngine_1.Resources.Load(\"MAT_Blue\");\r\n        }\r\n        else if
+    (this.gameObject.tag === \"ENEMY\") {\r\n            UnityEngine_1.Debug.LogError(\"is
+    enemy\");\r\n            const projectileComponent = projectile.GetComponent($typeof(ProjectileComponent_1.default));
+    //.OwnerType = EntityType.PLAYER;\r\n            projectileComponent.OwnerType
+    = Configs_1.EntityType.ENEMY;\r\n            projectileComponent.ProjectileMaterial.material
+    = UnityEngine_1.Resources.Load(\"MAT_Red\");\r\n        }\r\n        projectile.transform.forward
+    = this.projectileOrigin.transform.forward;\r\n    }\r\n}\r\nexports.default =
+    CanonComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ2Fub25Db21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJDYW5vbkNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUFvSTtBQUNwSSxpREFBcUQ7QUFDckQsK0RBQXdEO0FBQ3hELHVDQUF1QztBQUV2QyxNQUFxQixjQUFlLFNBQVEscUNBQXFCO0lBQWpFOztRQUNXLGVBQVUsR0FBZ0IsSUFBSSxDQUFDO1FBQy9CLHFCQUFnQixHQUFlLElBQUksQ0FBQTtRQUNuQyxzQkFBaUIsR0FBWSxJQUFJLENBQUM7SUF5QzdDLENBQUM7SUF2Q0csS0FBSztRQUNELG1CQUFLLENBQUMsUUFBUSxDQUFDLE9BQU8sQ0FBQyxDQUFDO1FBQ3hCLElBQUksQ0FBQyxjQUFjLENBQUMsSUFBSSxDQUFDLGFBQWEsRUFBRSxDQUFDLENBQUM7SUFDOUMsQ0FBQztJQUVELE1BQU07UUFDRixJQUFJLG1CQUFLLENBQUMsVUFBVSxDQUFDLHFCQUFPLENBQUMsQ0FBQyxDQUFDLEVBQUU7WUFDN0IsK0JBQStCO1NBQ2xDO0lBQ0wsQ0FBQztJQUVPLENBQUMsYUFBYTtRQUNsQixtQkFBSyxDQUFDLFFBQVEsQ0FBQyxXQUFXLENBQUMsQ0FBQztRQUM1QixPQUFNLElBQUksRUFBRTtZQUNSLE1BQU0sSUFBSSxDQUFDO1lBQ1AsSUFBSSxDQUFDLHFCQUFxQixFQUFFLENBQUM7WUFDakMsTUFBTSxJQUFJLDRCQUFjLENBQUMsSUFBSSxDQUFDLGlCQUFpQixDQUFDLENBQUE7U0FDbkQ7SUFFTCxDQUFDO0lBRU8scUJBQXFCO1FBQ3pCLE1BQU0sVUFBVSxHQUFnQix3QkFBVSxDQUFDLFdBQVcsQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxTQUFTLENBQUMsUUFBUSxFQUFFLHdCQUFVLENBQUMsUUFBUSxDQUFlLENBQUM7UUFFckosSUFBSSxJQUFJLENBQUMsVUFBVSxDQUFDLEdBQUcsS0FBSyxRQUFRLEVBQUU7WUFDbEMsbUJBQUssQ0FBQyxRQUFRLENBQUMsV0FBVyxDQUFDLENBQUM7WUFDNUIsTUFBTSxtQkFBbUIsR0FBeUIsVUFBVSxDQUFDLFlBQVksU0FBQyw2QkFBbUIsRUFBRyxDQUFDLENBQUEsaUNBQWlDO1lBQ2xJLG1CQUFtQixDQUFDLFNBQVMsR0FBRyxvQkFBVSxDQUFDLE1BQU0sQ0FBQztZQUNsRCxtQkFBbUIsQ0FBQyxrQkFBa0IsQ0FBQyxRQUFRLEdBQUcsdUJBQVMsQ0FBQyxJQUFJLENBQUMsVUFBVSxDQUFhLENBQUM7U0FDNUY7YUFBTSxJQUFJLElBQUksQ0FBQyxVQUFVLENBQUMsR0FBRyxLQUFLLE9BQU8sRUFBRTtZQUN4QyxtQkFBSyxDQUFDLFFBQVEsQ0FBQyxVQUFVLENBQUMsQ0FBQztZQUMzQixNQUFNLG1CQUFtQixHQUF5QixVQUFVLENBQUMsWUFBWSxTQUFDLDZCQUFtQixFQUFHLENBQUMsQ0FBQSxpQ0FBaUM7WUFDbEksbUJBQW1CLENBQUMsU0FBUyxHQUFHLG9CQUFVLENBQUMsS0FBSyxDQUFDO1lBQ2pELG1CQUFtQixDQUFDLGtCQUFrQixDQUFDLFFBQVEsR0FBRyx1QkFBUyxDQUFDLElBQUksQ0FBQyxTQUFTLENBQWEsQ0FBQztTQUMzRjtRQUVELFVBQVUsQ0FBQyxTQUFTLENBQUMsT0FBTyxHQUFHLElBQUksQ0FBQyxnQkFBZ0IsQ0FBQyxTQUFTLENBQUMsT0FBTyxDQUFDO0lBQzNFLENBQUM7Q0FFSjtBQTVDRCxpQ0E0Q0MifQ==","assetPath":"Assets/Scripts/CanonComponent.ts","manifest":{"properties":[{"assembly":"UnityEngine.CoreModule","name":"projectile","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"projectileOrigin","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"fireRatePerSecond","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"CanonComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 5e3e14d013206f3f4bddc48dc2993436
+  onlyWriteTrigger: 0

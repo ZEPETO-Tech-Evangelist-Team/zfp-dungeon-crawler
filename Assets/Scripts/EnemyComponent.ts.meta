@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: e4029f429c5590a4595809dfd28e58c6
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass
+    EnemyComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.Id = null;\r\n        this.EntityType
+    = null;\r\n    }\r\n    Init(id) {\r\n        this.Id = id;\r\n    }\r\n}\r\nexports.default
+    = EnemyComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRW5lbXlDb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJFbmVteUNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLGlEQUFxRDtBQUdyRCxNQUFxQixjQUFlLFNBQVEscUNBQXFCO0lBQWpFOztRQUNXLE9BQUUsR0FBWSxJQUFJLENBQUM7UUFDbkIsZUFBVSxHQUFnQixJQUFJLENBQUM7SUFLMUMsQ0FBQztJQUhHLElBQUksQ0FBQyxFQUFXO1FBQ1osSUFBSSxDQUFDLEVBQUUsR0FBRyxFQUFFLENBQUM7SUFDakIsQ0FBQztDQUNKO0FBUEQsaUNBT0MifQ==","assetPath":"Assets/Scripts/EnemyComponent.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"Id","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"EntityType","type":"EntityType","isArray":false,"initValue":[],"enumKeys":["NONE","PLAYER","ENEMY"],"enumValues":["0","1","2"],"attributes":[]}],"name":"EnemyComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 897566382f468ff48496e250e1ffcc24
+  onlyWriteTrigger: 0

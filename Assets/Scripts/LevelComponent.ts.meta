@@ -1,0 +1,31 @@
+fileFormatVersion: 2
+guid: af7b3a92b917fba46922f01c4269b60c
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst UnityEngine_1 = require(\"UnityEngine\");\r\nconst
+    ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst GateComponent_1 = require(\"./GateComponent\");\r\nclass
+    LevelComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.LevelType = null;\r\n       
+    this.PlayerSpawnPoint = null;\r\n        this.EnemySpawnPoints = null;\r\n       
+    this.GateGameObject = null;\r\n        this.GateComponent = null;\r\n    }\r\n   
+    Start() {\r\n        this.GateComponent = this.GateGameObject.GetComponent($typeof(GateComponent_1.default));\r\n   
+    }\r\n}\r\nexports.default = LevelComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGV2ZWxDb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJMZXZlbENvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBLDZDQUFtRDtBQUNuRCxpREFBcUQ7QUFFckQsbURBQTRDO0FBRTVDLE1BQXFCLGNBQWUsU0FBUSxxQ0FBcUI7SUFBakU7O1FBQ1csY0FBUyxHQUFlLElBQUksQ0FBQztRQUM3QixxQkFBZ0IsR0FBZSxJQUFJLENBQUM7UUFDcEMscUJBQWdCLEdBQWlCLElBQUksQ0FBQztRQUV0QyxtQkFBYyxHQUFnQixJQUFJLENBQUM7UUFDbkMsa0JBQWEsR0FBbUIsSUFBSSxDQUFDO0lBS2hELENBQUM7SUFIRyxLQUFLO1FBQ0QsSUFBSSxDQUFDLGFBQWEsR0FBRyxJQUFJLENBQUMsY0FBYyxDQUFDLFlBQVksU0FBQyx1QkFBYSxFQUFHLENBQUM7SUFDM0UsQ0FBQztDQUNKO0FBWEQsaUNBV0MifQ==","assetPath":"Assets/Scripts/LevelComponent.ts","manifest":{"properties":[{"assembly":"","name":"LevelType","type":"LevelType","isArray":false,"initValue":[],"enumKeys":["NONE","FOUR_BLOCK_A","TWO_BLOCK_A","ONE_BLOCK_A"],"enumValues":["0","1","11","21"],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"PlayerSpawnPoint","type":"UnityEngine.Transform","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"EnemySpawnPoints","type":"UnityEngine.Transform[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"UnityEngine.CoreModule","name":"GateGameObject","type":"UnityEngine.GameObject","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"GateComponent","type":"C:/Users/mondu/OneDrive/Documents/zfp-dungeon-crawler/Assets/Scripts/GateComponent.default","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"LevelComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: a0dd256b50787f4bfbbdcc0fcedf5805
+  onlyWriteTrigger: 0
