@@ -5,11 +5,11 @@ import { EntityType } from './Configs';
 export default class ProjectileComponent extends ZepetoScriptBehaviour {
     public ForceAmount : number = 0;
     public LifeTimeSecs : number = 0;
+    public OwnerType : EntityType = null;
+    public ProjectileMaterial : MeshRenderer = null;
+
     private _rigidBody : Rigidbody = null;
     private _timer : number = 0;
-    public OwnerType : EntityType = null;
-
-    public ProjectileMaterial : MeshRenderer = null;
 
     Start() {    
         this._rigidBody = this.GetComponent<Rigidbody>();

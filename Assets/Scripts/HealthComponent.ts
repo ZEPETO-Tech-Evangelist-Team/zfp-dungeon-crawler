@@ -12,17 +12,17 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
     public HealthUI : GameObject = null;
     public HealthText : TextMeshProUGUI = null;
     public HealthPower : number = null;
-    private _enemyComponent : EntityComponent = null;
+    private _entityComponent : EntityComponent = null;
 
     Start() {
-        this._enemyComponent = this.gameObject.GetComponent<EntityComponent>()
+        this._entityComponent = this.gameObject.GetComponent<EntityComponent>()
         this.SetHealth();
     }
 
     private SetHealth() {
-        if (this._enemyComponent.EntityType === EntityType.PLAYER) {
+        if (this._entityComponent.EntityType === EntityType.PLAYER) {
             this.HealthPower = PLAYER_STARTING_HEALTH;
-        } else if (this._enemyComponent.EntityType === EntityType.ENEMY) {
+        } else if (this._entityComponent.EntityType === EntityType.ENEMY) {
             this.HealthPower = ENEMY_STARTING_HEALTH;
         }
     }
@@ -60,10 +60,10 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
     }
 
     Destroy() {
-        switch (this._enemyComponent.EntityType) {
+        switch (this._entityComponent.EntityType) {
             case EntityType.ENEMY:
                 GameObject.Destroy(this.gameObject);
-                Main.instance.LevelManager.EnemyEntityComponents.set(this._enemyComponent.Id, null);
+                Main.instance.LevelManager.EnemyEntityComponents.set(this._entityComponent.Id, null);
             break;
             case EntityType.PLAYER:
                 Main.instance.SetGameState(GameState.COMPLETE_GAME);

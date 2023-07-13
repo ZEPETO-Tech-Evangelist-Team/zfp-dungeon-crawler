@@ -8,7 +8,7 @@ import EntityComponent from './EntityComponent';
 import HealthComponent from './HealthComponent';
 import LevelManager from './LevelManager';
 export default class Main extends ZepetoScriptBehaviour {
-    public  static instance : Main = null;
+    public static instance : Main = null;
     public Configs : Configs = null;
     public LevelManager : LevelManager = null;
     public CurrentLevel : number = null;

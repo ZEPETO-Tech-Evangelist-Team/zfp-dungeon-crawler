@@ -1,6 +1,6 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 
-export const PLAYER_STARTING_HEALTH : number = 1;
+export const PLAYER_STARTING_HEALTH : number = 10;
 export const ENEMY_STARTING_HEALTH : number = 5;
 export const PROJECTILE_DAMAGE : number = 1;
 export const SHARP_DAMAGE : number = 0.25;
@@ -62,10 +62,10 @@ export default class Configs {
                 LevelType : LevelType.TWO_BLOCK_A,
                 EnemyTypes : [
                     EnemyType.RANGE,
+                    EnemyType.NONE,
                     EnemyType.RANGE,
                     EnemyType.NONE,
-                    EnemyType.NONE,
-                    EnemyType.NONE,
+                    EnemyType.RANGE,
                     EnemyType.NONE,
                     EnemyType.NONE,
                     EnemyType.NONE,
@@ -77,11 +77,11 @@ export default class Configs {
                 LevelName : "Second Level",
                 LevelType : LevelType.ONE_BLOCK_A,
                 EnemyTypes : [
-                    EnemyType.RANGE,
-                    EnemyType.RANGE,
+                    EnemyType.TOWER,
                     EnemyType.NONE,
+                    EnemyType.TOWER,
                     EnemyType.NONE,
-                    EnemyType.NONE,
+                    EnemyType.TOWER,
                     EnemyType.NONE,
                     EnemyType.NONE,
                     EnemyType.NONE,
@@ -93,11 +93,11 @@ export default class Configs {
                 LevelName : "Third Level",
                 LevelType : LevelType.FOUR_BLOCK_A,
                 EnemyTypes : [
-                    EnemyType.RANGE,
-                    EnemyType.RANGE,
+                    EnemyType.MELEE,
                     EnemyType.NONE,
+                    EnemyType.MELEE,
                     EnemyType.NONE,
-                    EnemyType.NONE,
+                    EnemyType.MELEE,
                     EnemyType.NONE,
                     EnemyType.NONE,
                     EnemyType.NONE,

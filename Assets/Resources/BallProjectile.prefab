@@ -158,7 +158,7 @@ MonoBehaviour:
     values:
     - '{"type":"System.Single, mscorlib","value":"100"}'
     - '{"type":"System.Single, mscorlib","value":"1"}'
-    - 
+    - '{"type":"System.Int32, mscorlib","value":"1"}'
     - 
     unityArrayValues: []
     arrayValues: []
