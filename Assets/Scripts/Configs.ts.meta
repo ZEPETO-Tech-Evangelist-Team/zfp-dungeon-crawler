@@ -19,26 +19,24 @@ ScriptedImporter:
   WrapperFilters: []
   wrapperOutputDirectory: Generated
   compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
-    { value: true });\r\nexports.Level = exports.UpgradeType = exports.EnemyType
-    = exports.LevelType = exports.GameState = exports.DoorState = exports.EntityType
-    = exports.SHARP_DAMAGE = exports.PROJECTILE_DAMAGE = exports.PLAYER_STARTING_HEALTH
-    = void 0;\r\nexports.PLAYER_STARTING_HEALTH = 10;\r\nexports.PROJECTILE_DAMAGE
-    = 1;\r\nexports.SHARP_DAMAGE = 0.25;\r\nvar EntityType;\r\n(function (EntityType)
-    {\r\n    EntityType[EntityType[\"NONE\"] = 0] = \"NONE\";\r\n    EntityType[EntityType[\"PLAYER\"]
-    = 1] = \"PLAYER\";\r\n    EntityType[EntityType[\"ENEMY\"] = 2] = \"ENEMY\";\r\n})(EntityType
-    = exports.EntityType || (exports.EntityType = {}));\r\nvar DoorState;\r\n(function
-    (DoorState) {\r\n    DoorState[DoorState[\"NONE\"] = 0] = \"NONE\";\r\n    DoorState[DoorState[\"OPEN\"]
+    { value: true });\r\nexports.Level = exports.EnemyType = exports.LevelType =
+    exports.GameState = exports.DoorState = exports.EntityType = exports.SHARP_DAMAGE
+    = exports.PROJECTILE_DAMAGE = exports.ENEMY_STARTING_HEALTH = exports.PLAYER_STARTING_HEALTH
+    = void 0;\r\nexports.PLAYER_STARTING_HEALTH = 1;\r\nexports.ENEMY_STARTING_HEALTH
+    = 5;\r\nexports.PROJECTILE_DAMAGE = 1;\r\nexports.SHARP_DAMAGE = 0.25;\r\nvar
+    EntityType;\r\n(function (EntityType) {\r\n    EntityType[EntityType[\"NONE\"]
+    = 0] = \"NONE\";\r\n    EntityType[EntityType[\"PLAYER\"] = 1] = \"PLAYER\";\r\n   
+    EntityType[EntityType[\"ENEMY\"] = 2] = \"ENEMY\";\r\n})(EntityType = exports.EntityType
+    || (exports.EntityType = {}));\r\nvar DoorState;\r\n(function (DoorState) {\r\n   
+    DoorState[DoorState[\"NONE\"] = 0] = \"NONE\";\r\n    DoorState[DoorState[\"OPEN\"]
     = 1] = \"OPEN\";\r\n    DoorState[DoorState[\"CLOSE\"] = 2] = \"CLOSE\";\r\n   
     DoorState[DoorState[\"IDLE\"] = 3] = \"IDLE\";\r\n})(DoorState = exports.DoorState
     || (exports.DoorState = {}));\r\nvar GameState;\r\n(function (GameState) {\r\n   
     GameState[GameState[\"NONE\"] = 0] = \"NONE\";\r\n    GameState[GameState[\"LOADING\"]
     = 1] = \"LOADING\";\r\n    GameState[GameState[\"START_FIGHTING\"] = 2] = \"START_FIGHTING\";\r\n   
     GameState[GameState[\"CONTINUE_FIGHTING\"] = 3] = \"CONTINUE_FIGHTING\";\r\n   
-    GameState[GameState[\"END_FIGHTING\"] = 4] = \"END_FIGHTING\";\r\n    GameState[GameState[\"START_UPGRADE_SELECT\"]
-    = 5] = \"START_UPGRADE_SELECT\";\r\n    GameState[GameState[\"CONTINUE_UPGRADE_SELECT\"]
-    = 6] = \"CONTINUE_UPGRADE_SELECT\";\r\n    GameState[GameState[\"END_UPGRADE_SELECT\"]
-    = 7] = \"END_UPGRADE_SELECT\";\r\n    GameState[GameState[\"COMPLETE_GAME\"]
-    = 8] = \"COMPLETE_GAME\";\r\n})(GameState = exports.GameState || (exports.GameState
+    GameState[GameState[\"END_FIGHTING\"] = 4] = \"END_FIGHTING\";\r\n    GameState[GameState[\"COMPLETE_GAME\"]
+    = 5] = \"COMPLETE_GAME\";\r\n})(GameState = exports.GameState || (exports.GameState
     = {}));\r\nvar LevelType;\r\n(function (LevelType) {\r\n    LevelType[LevelType[\"NONE\"]
     = 0] = \"NONE\";\r\n    LevelType[LevelType[\"FOUR_BLOCK_A\"] = 1] = \"FOUR_BLOCK_A\";\r\n   
     LevelType[LevelType[\"TWO_BLOCK_A\"] = 11] = \"TWO_BLOCK_A\";\r\n    LevelType[LevelType[\"ONE_BLOCK_A\"]
@@ -46,42 +44,30 @@ ScriptedImporter:
     = {}));\r\nvar EnemyType;\r\n(function (EnemyType) {\r\n    EnemyType[EnemyType[\"NONE\"]
     = 0] = \"NONE\";\r\n    EnemyType[EnemyType[\"TOWER\"] = 1] = \"TOWER\";\r\n   
     EnemyType[EnemyType[\"RANGE\"] = 2] = \"RANGE\";\r\n    EnemyType[EnemyType[\"MELEE\"]
-    = 3] = \"MELEE\";\r\n    EnemyType[EnemyType[\"RANDOM\"] = 4] = \"RANDOM\";\r\n   
-    EnemyType[EnemyType[\"MAX_VALUE\"] = 5] = \"MAX_VALUE\";\r\n})(EnemyType = exports.EnemyType
-    || (exports.EnemyType = {}));\r\nvar UpgradeType;\r\n(function (UpgradeType)
-    {\r\n    UpgradeType[UpgradeType[\"NONE\"] = 0] = \"NONE\";\r\n    UpgradeType[UpgradeType[\"MOVE_SPEED\"]
-    = 1] = \"MOVE_SPEED\";\r\n    UpgradeType[UpgradeType[\"ATTACK_SPEED\"] = 2]
-    = \"ATTACK_SPEED\";\r\n    UpgradeType[UpgradeType[\"PROJECTILE_SPEED\"] = 3]
-    = \"PROJECTILE_SPEED\";\r\n    UpgradeType[UpgradeType[\"ATTACK_POWER\"] = 4]
-    = \"ATTACK_POWER\";\r\n    UpgradeType[UpgradeType[\"HEALTH_POWER\"] = 5] = \"HEALTH_POWER\";\r\n   
-    UpgradeType[UpgradeType[\"WEAPON_COUNT\"] = 6] = \"WEAPON_COUNT\";\r\n})(UpgradeType
-    = exports.UpgradeType || (exports.UpgradeType = {}));\r\nclass Level {\r\n}\r\nexports.Level
-    = Level;\r\nclass Configs {\r\n    constructor() {\r\n        this.MoveSpeedByLevel
-    = [1, 2, 3, 4, 5];\r\n        this.AttackPowerByLevel = [1, 2, 3, 4, 5];\r\n       
-    this.ProjectileSpeedByLevel = [1, 2, 3, 4, 5];\r\n        this.AttackPowerByLevel
-    = [1, 2, 3, 4, 5];\r\n        this.HealthPowerByLevel = [1, 2, 3, 4, 5];\r\n       
-    this.WeaponCountByLevel = [1, 2, 3, 4, 5];\r\n        this.Levels = [\r\n           
+    = 3] = \"MELEE\";\r\n    EnemyType[EnemyType[\"MAX_VALUE\"] = 5] = \"MAX_VALUE\";\r\n})(EnemyType
+    = exports.EnemyType || (exports.EnemyType = {}));\r\nclass Level {\r\n}\r\nexports.Level
+    = Level;\r\nclass Configs {\r\n    constructor() {\r\n        this.Levels = [\r\n           
     {\r\n                LevelName: \"First Level\",\r\n                LevelType:
     LevelType.TWO_BLOCK_A,\r\n                EnemyTypes: [\r\n                   
-    EnemyType.RANGE,\r\n                    EnemyType.NONE,\r\n                   
+    EnemyType.RANGE,\r\n                    EnemyType.RANGE,\r\n                   
     EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
     EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
     EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
     EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                ]\r\n           
     },\r\n            {\r\n                LevelName: \"Second Level\",\r\n               
     LevelType: LevelType.ONE_BLOCK_A,\r\n                EnemyTypes: [\r\n                   
-    EnemyType.MELEE,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.MELEE,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.MELEE,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.MELEE,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.MELEE,\r\n                    EnemyType.NONE,\r\n                ]\r\n           
+    EnemyType.RANGE,\r\n                    EnemyType.RANGE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                ]\r\n           
     },\r\n            {\r\n                LevelName: \"Third Level\",\r\n               
     LevelType: LevelType.FOUR_BLOCK_A,\r\n                EnemyTypes: [\r\n                   
-    EnemyType.TOWER,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.TOWER,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.TOWER,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.TOWER,\r\n                    EnemyType.NONE,\r\n                   
-    EnemyType.TOWER,\r\n                    EnemyType.NONE,\r\n                ]\r\n           
-    },\r\n        ];\r\n    }\r\n}\r\nexports.default = Configs;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29uZmlncy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNvbmZpZ3MudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBRWEsUUFBQSxzQkFBc0IsR0FBWSxFQUFFLENBQUM7QUFDckMsUUFBQSxpQkFBaUIsR0FBWSxDQUFDLENBQUM7QUFDL0IsUUFBQSxZQUFZLEdBQVksSUFBSSxDQUFDO0FBRTFDLElBQVksVUFJWDtBQUpELFdBQVksVUFBVTtJQUNsQiwyQ0FBUSxDQUFBO0lBQ1IsK0NBQVUsQ0FBQTtJQUNWLDZDQUFTLENBQUE7QUFDYixDQUFDLEVBSlcsVUFBVSxHQUFWLGtCQUFVLEtBQVYsa0JBQVUsUUFJckI7QUFFRCxJQUFZLFNBS1g7QUFMRCxXQUFZLFNBQVM7SUFDakIseUNBQVEsQ0FBQTtJQUNSLHlDQUFRLENBQUE7SUFDUiwyQ0FBUyxDQUFBO0lBQ1QseUNBQVEsQ0FBQTtBQUNaLENBQUMsRUFMVyxTQUFTLEdBQVQsaUJBQVMsS0FBVCxpQkFBUyxRQUtwQjtBQUVELElBQVksU0FjWDtBQWRELFdBQVksU0FBUztJQUNqQix5Q0FBUSxDQUFBO0lBRVIsK0NBQVcsQ0FBQTtJQUVYLDZEQUFrQixDQUFBO0lBQ2xCLG1FQUFxQixDQUFBO0lBQ3JCLHlEQUFnQixDQUFBO0lBRWhCLHlFQUF3QixDQUFBO0lBQ3hCLCtFQUEyQixDQUFBO0lBQzNCLHFFQUFzQixDQUFBO0lBRXRCLDJEQUFpQixDQUFBO0FBQ3JCLENBQUMsRUFkVyxTQUFTLEdBQVQsaUJBQVMsS0FBVCxpQkFBUyxRQWNwQjtBQUVELElBQVksU0FLWDtBQUxELFdBQVksU0FBUztJQUNqQix5Q0FBUSxDQUFBO0lBQ1IseURBQWdCLENBQUE7SUFDaEIsd0RBQWdCLENBQUE7SUFDaEIsd0RBQWdCLENBQUE7QUFDcEIsQ0FBQyxFQUxXLFNBQVMsR0FBVCxpQkFBUyxLQUFULGlCQUFTLFFBS3BCO0FBRUQsSUFBWSxTQU9YO0FBUEQsV0FBWSxTQUFTO0lBQ2pCLHlDQUFRLENBQUE7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","assetPath":"Assets/Scripts/Configs.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"MoveSpeedByLevel","type":"System.Single[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"AttackSpeedByLevel","type":"System.Single[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"ProjectileSpeedByLevel","type":"System.Single[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"AttackPowerByLevel","type":"System.Single[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"HealthPowerByLevel","type":"System.Single[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"mscorlib","name":"WeaponCountByLevel","type":"System.Single[]","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"Levels","type":"C:/Users/mondu/OneDrive/Documents/zfp-dungeon-crawler-lesson/Assets/Scripts/Configs.Level","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Level","description":"","hasAnimatorMove":false},"isCompiled":true}'
-  typescriptHash: 0cf2b6462334089bea0d1d639fb30036
+    EnemyType.RANGE,\r\n                    EnemyType.RANGE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                   
+    EnemyType.NONE,\r\n                    EnemyType.NONE,\r\n                ]\r\n           
+    },\r\n        ];\r\n    }\r\n}\r\nexports.default = Configs;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiQ29uZmlncy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIkNvbmZpZ3MudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBRWEsUUFBQSxzQkFBc0IsR0FBWSxDQUFDLENBQUM7QUFDcEMsUUFBQSxxQkFBcUIsR0FBWSxDQUFDLENBQUM7QUFDbkMsUUFBQSxpQkFBaUIsR0FBWSxDQUFDLENBQUM7QUFDL0IsUUFBQSxZQUFZLEdBQVksSUFBSSxDQUFDO0FBRTFDLElBQVksVUFJWDtBQUpELFdBQVksVUFBVTtJQUNsQiwyQ0FBUSxDQUFBO0lBQ1IsK0NBQVUsQ0FBQTtJQUNWLDZDQUFTLENBQUE7QUFDYixDQUFDLEVBSlcsVUFBVSxHQUFWLGtCQUFVLEtBQVYsa0JBQVUsUUFJckI7QUFFRCxJQUFZLFNBS1g7QUFMRCxXQUFZLFNBQVM7SUFDakIseUNBQVEsQ0FBQTtJQUNSLHlDQUFRLENBQUE7SUFDUiwyQ0FBUyxDQUFBO0lBQ1QseUNBQVEsQ0FBQTtBQUNaLENBQUMsRUFMVyxTQUFTLEdBQVQsaUJBQVMsS0FBVCxpQkFBUyxRQUtwQjtBQUVELElBQVksU0FVWDtBQVZELFdBQVksU0FBUztJQUNqQix5Q0FBUSxDQUFBO0lBRVIsK0NBQVcsQ0FBQTtJQUVYLDZEQUFrQixDQUFBO0lBQ2xCLG1FQUFxQixDQUFBO0lBQ3JCLHlEQUFnQixDQUFBO0lBRWhCLDJEQUFpQixDQUFBO0FBQ3JCLENBQUMsRUFWVyxTQUFTLEdBQVQsaUJBQVMsS0FBVCxpQkFBUyxRQVVwQjtBQUVELElBQVksU0FLWDtBQUxELFdBQVksU0FBUztJQUNqQix5Q0FBUSxDQUFBO0lBQ1IseURBQWdCLENBQUE7SUFDaEIsd0RBQWdCLENBQUE7SUFDaEIsd0RBQWdCLENBQUE7QUFDcEIsQ0FBQyxFQUxXLFNBQVMsR0FBVCxpQkFBUyxLQUFULGlCQUFTLFFBS3BCO0FBRUQsSUFBWSxTQU1YO0FBTkQsV0FBWSxTQUFTO0lBQ2pCLHlDQUFRLENBQUE7SUFDUiwyQ0FBUyxDQUFBO0lBQ1QsMkNBQVMsQ0FBQTtJQUNULDJDQUFTLENBQUE7SUFDVCxtREFBYSxDQUFBO0FBQ2pCLENBQUMsRUFOVyxTQUFTLEdBQVQsaUJBQVMsS0FBVCxpQkFBUyxRQU1wQjtBQUVELE1BQWEsS0FBSztDQUlqQjtBQUpELHNCQUlDO0FBRUQsTUFBcUIsT0FBTztJQUl4QjtRQUNJLElBQUksQ0FBQyxNQUFNLEdBQUc7WUFDVjtnQkFDSSxTQUFTLEVBQUcsYUFBYTtnQkFDekIsU0FBUyxFQUFHLFNBQVMsQ0FBQyxXQUFXO2dCQUNqQyxVQUFVLEVBQUc7b0JBQ1QsU0FBUyxDQUFDLEtBQUs7b0JBQ2YsU0FBUyxDQUFDLEtBQUs7b0JBQ2YsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7aUJBQ2pCO2FBQ0o7WUFDRDtnQkFDSSxTQUFTLEVBQUcsY0FBYztnQkFDMUIsU0FBUyxFQUFHLFNBQVMsQ0FBQyxXQUFXO2dCQUNqQyxVQUFVLEVBQUc7b0JBQ1QsU0FBUyxDQUFDLEtBQUs7b0JBQ2YsU0FBUyxDQUFDLEtBQUs7b0JBQ2YsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7aUJBQ2pCO2FBQ0o7WUFDRDtnQkFDSSxTQUFTLEVBQUcsYUFBYTtnQkFDekIsU0FBUyxFQUFHLFNBQVMsQ0FBQyxZQUFZO2dCQUNsQyxVQUFVLEVBQUc7b0JBQ1QsU0FBUyxDQUFDLEtBQUs7b0JBQ2YsU0FBUyxDQUFDLEtBQUs7b0JBQ2YsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7b0JBQ2QsU0FBUyxDQUFDLElBQUk7aUJBQ2pCO2FBQ0o7U0FDSixDQUFDO0lBQ04sQ0FBQztDQUNKO0FBeERELDBCQXdEQyJ9","assetPath":"Assets/Scripts/Configs.ts","manifest":{"properties":[{"assembly":"","name":"Levels","type":"C:/Users/mondu/OneDrive/Documents/zfp-dungeon-crawler-lesson/Assets/Scripts/Configs.Level","isArray":true,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]}],"name":"Level","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 3d4cc99f79e6dad32207e302f4644e13
   onlyWriteTrigger: 0

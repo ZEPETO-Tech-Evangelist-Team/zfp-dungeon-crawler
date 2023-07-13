@@ -1,7 +1,7 @@
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { EntityType } from './Configs';
 
-export default class EnemyComponent extends ZepetoScriptBehaviour {
+export default class EntityComponent extends ZepetoScriptBehaviour {
     public Id : number = null;
     public EntityType : EntityType = null;
 

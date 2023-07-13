@@ -1,9 +1,9 @@
 import { Camera, Collider, Debug, GameObject, Vector3 } from 'UnityEngine';
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import EnemyComponent from './EnemyComponent';
+import EntityComponent from './EntityComponent';
 import ProjectileComponent from './ProjectileComponent';
 import SharpComponent from './SharpComponent';
-import { EntityType, GameState, PLAYER_STARTING_HEALTH, PROJECTILE_DAMAGE, SHARP_DAMAGE } from './Configs';
+import { ENEMY_STARTING_HEALTH, EntityType, GameState, PLAYER_STARTING_HEALTH, PROJECTILE_DAMAGE, SHARP_DAMAGE } from './Configs';
 import { TextMeshProUGUI } from 'TMPro';
 import Main from './Main';
 
@@ -12,11 +12,19 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
     public HealthUI : GameObject = null;
     public HealthText : TextMeshProUGUI = null;
     public HealthPower : number = null;
-    private _enemyComponent : EnemyComponent = null;
+    private _enemyComponent : EntityComponent = null;
 
     Start() {
-        this._enemyComponent = this.gameObject.GetComponent<EnemyComponent>()
-        this.HealthPower = PLAYER_STARTING_HEALTH;
+        this._enemyComponent = this.gameObject.GetComponent<EntityComponent>()
+        this.SetHealth();
+    }
+
+    private SetHealth() {
+        if (this._enemyComponent.EntityType === EntityType.PLAYER) {
+            this.HealthPower = PLAYER_STARTING_HEALTH;
+        } else if (this._enemyComponent.EntityType === EntityType.ENEMY) {
+            this.HealthPower = ENEMY_STARTING_HEALTH;
+        }
     }
 
     Update() {
@@ -31,7 +39,7 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
         if (other.gameObject.tag === "PROJECTILE") {
 
             //check for friendly fire
-            if (other.gameObject.GetComponent<ProjectileComponent>().OwnerType !== this.gameObject.GetComponent<EnemyComponent>().EntityType) {
+            if (other.gameObject.GetComponent<ProjectileComponent>().OwnerType !== this.gameObject.GetComponent<EntityComponent>().EntityType) {
                 this.HealthPower -= PROJECTILE_DAMAGE;
                 if (this.HealthPower <= 0) {
                     this.Destroy();
@@ -42,7 +50,7 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
         if (other.gameObject.tag === "SHARP") {
 
             //check for friendly fire
-            if (other.gameObject.GetComponent<SharpComponent>().OwnerType !== this.gameObject.GetComponent<EnemyComponent>().EntityType) {
+            if (other.gameObject.GetComponent<SharpComponent>().OwnerType !== this.gameObject.GetComponent<EntityComponent>().EntityType) {
                 this.HealthPower -= SHARP_DAMAGE;
                 if (this.HealthPower <= 0) {
                     this.Destroy();
@@ -55,10 +63,10 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
         switch (this._enemyComponent.EntityType) {
             case EntityType.ENEMY:
                 GameObject.Destroy(this.gameObject);
-                Main.instance.LevelManager.EnemyComponents.set(this._enemyComponent.Id, null);
+                Main.instance.LevelManager.EnemyEntityComponents.set(this._enemyComponent.Id, null);
             break;
             case EntityType.PLAYER:
-                Main.instance.LevelManager.RestartGame();
+                Main.instance.SetGameState(GameState.COMPLETE_GAME);
             break;
         }
     }

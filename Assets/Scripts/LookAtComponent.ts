@@ -2,7 +2,7 @@ import { Vector3 } from 'UnityEngine';
 import { ZepetoPlayers } from 'ZEPETO.Character.Controller'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { EntityType } from './Configs';
-import EnemyComponent from './EnemyComponent';
+import EntityComponent from './EntityComponent';
 import Main from './Main';
 
 export default class LookAtComponent extends ZepetoScriptBehaviour {
@@ -20,10 +20,10 @@ export default class LookAtComponent extends ZepetoScriptBehaviour {
                 }
                 break;
             case EntityType.ENEMY:
-                let closestEnemyComponent : EnemyComponent = null;
+                let closestEnemyComponent : EntityComponent = null;
                 let distanceToCompare : number = Number.MAX_VALUE;
 
-                Main.instance.LevelManager.EnemyComponents.forEach(element => {
+                Main.instance.LevelManager.EnemyEntityComponents.forEach(element => {
                     if (element !== null) {
                         const distance :number = Vector3.Distance(this.gameObject.transform.position, element.gameObject.transform.position);
                         if (distance < distanceToCompare) {

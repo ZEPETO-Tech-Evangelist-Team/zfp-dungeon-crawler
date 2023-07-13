@@ -3,19 +3,16 @@ import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import LevelComponent from './LevelComponent';
 import { ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { DoorState, EnemyType, GameState, LevelType, PLAYER_STARTING_HEALTH } from './Configs';
-import EnemyComponent from './EnemyComponent';
+import EntityComponent from './EntityComponent';
 import HealthComponent from './HealthComponent';
 import Main from './Main';
 
 export default class LevelManager extends ZepetoScriptBehaviour {
     public LevelGameObjects : GameObject[] = null;
+    public EnemyEntityComponents : Map<number, EntityComponent> = null;
 
     private _levelComponents : LevelComponent[] = null;
     private _currentLevelComponentIndex: number = null;
-
-    public EnemyComponents : Map<number, EnemyComponent> = null;
-    public EnemyComponentsCount : number = 0;
-
     private _hasKilledAllEnemies : boolean = null;
 
     CustomStart() { 
@@ -31,7 +28,7 @@ export default class LevelManager extends ZepetoScriptBehaviour {
 
         ZepetoPlayers.instance.LocalPlayer.zepetoPlayer.character.Teleport(currentLevelComponent.PlayerSpawnPoint.position, Quaternion.identity);
 
-        this.EnemyComponents = new Map<number, EnemyComponent>();
+        this.EnemyEntityComponents = new Map<number, EntityComponent>();
 
         this.InstantiateEnemies();
 
@@ -39,7 +36,6 @@ export default class LevelManager extends ZepetoScriptBehaviour {
     }
 
     CustomUpdate() {
-        this.EnemyComponentsCount = this.EnemyComponents.size;
         if (this._hasKilledAllEnemies === false) {
             this.CheckIfAllEnemiesKilled();
         }
@@ -53,7 +49,7 @@ export default class LevelManager extends ZepetoScriptBehaviour {
         Main.instance.CurrentLevel = 0;
 
         //clear enemy game objects
-        this.EnemyComponents.forEach(element => {
+        this.EnemyEntityComponents.forEach(element => {
             if (element !== null) {
                 GameObject.Destroy(element.gameObject);
             }
@@ -64,10 +60,11 @@ export default class LevelManager extends ZepetoScriptBehaviour {
 
     CheckIfAllEnemiesKilled() {
         let aliveCount : number = 0;
-        this.EnemyComponents.forEach(element => {
+        this.EnemyEntityComponents.forEach(element => {
             if (element !== null) {
                 aliveCount++;
             }
+            Debug.Log(aliveCount);
             if (aliveCount === 0) {
                 this._hasKilledAllEnemies = true;
                 this._levelComponents[this._currentLevelComponentIndex].GateComponent.SetClose();
@@ -76,7 +73,7 @@ export default class LevelManager extends ZepetoScriptBehaviour {
         });
     }
 
-    FindCurrentLevelComponentByLevel(level : number) : LevelComponent{
+    private FindCurrentLevelComponentByLevel(level : number) : LevelComponent{
 
         for (let i = 0; i < this._levelComponents.length; i++) {
 
@@ -93,9 +90,8 @@ export default class LevelManager extends ZepetoScriptBehaviour {
         return null;
     }
 
-    InstantiateEnemies() {
+    private InstantiateEnemies() {
         const currentLevel = Main.instance.CurrentLevel;
-        let currentEnemyIndex : number = 0;
 
         for (let i : number = 0; i < Main.instance.Configs.Levels[currentLevel].EnemyTypes.length; i++) {
             const enemyType : EnemyType = Main.instance.Configs.Levels[currentLevel].EnemyTypes[i];
@@ -111,12 +107,15 @@ export default class LevelManager extends ZepetoScriptBehaviour {
                 case EnemyType.TOWER:
                     enemyGO = GameObject.Instantiate(Resources.Load<GameObject>("TowerEnemy"), spawnPosition, Quaternion.identity) as GameObject;
                     break;
+                case EnemyType.NONE:
+                    //nothing happens here, do not create an enemy
+                    break;
             }
 
             if (enemyGO !== null) {
-                const enemyComponent : EnemyComponent = enemyGO.GetComponent<EnemyComponent>();
+                const enemyComponent : EntityComponent = enemyGO.GetComponent<EntityComponent>();
                 enemyComponent.Id = i;
-                this.EnemyComponents.set(i, enemyComponent);
+                this.EnemyEntityComponents.set(i, enemyComponent);
             }
         }
     }

@@ -4,7 +4,7 @@ import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { WorldService } from 'ZEPETO.World';
 import { TextMeshProUGUI } from 'TMPro';
 import Configs, { GameState, EntityType } from './Configs';
-import EnemyComponent from './EnemyComponent';
+import EntityComponent from './EntityComponent';
 import HealthComponent from './HealthComponent';
 import LevelManager from './LevelManager';
 export default class Main extends ZepetoScriptBehaviour {
@@ -14,31 +14,30 @@ export default class Main extends ZepetoScriptBehaviour {
     public CurrentLevel : number = null;
     public LocalPlayer : LocalPlayer = null;
     public ZepetoCamera : Camera = null;
-
-    private _gameState : GameState = null;
-
     public SuccessWinGO : GameObject = null;
     public LoseWinGO : GameObject = null;
 
-    public ShowSuccessWin() {
+    private _gameState : GameState = null;
+
+    private ShowSuccessWin() {
         this.SuccessWinGO.SetActive(true);
     }
 
-    public HideSuccessWin() {
+    private HideSuccessWin() {
         this.SuccessWinGO.SetActive(false);
         this.LevelManager.RestartGame();
     }
 
-    public ShowLoseWin() {
+    private ShowLoseWin() {
         this.LoseWinGO.SetActive(true);
     }
 
-    public HideLoseWin() {
+    private HideLoseWin() {
         this.LoseWinGO.SetActive(false);
         this.LevelManager.RestartGame();
     }
 
-    public static GetInstance(): Main
+    private static GetInstance(): Main
     {
         if (Main.instance == undefined)
         {
@@ -85,6 +84,7 @@ export default class Main extends ZepetoScriptBehaviour {
             break;
             case GameState.END_FIGHTING:
                 this.CurrentLevel ++;
+                //this is the last level, end the game
                 if (this.CurrentLevel >= this.Configs.Levels.length) {
                     this._gameState = GameState.COMPLETE_GAME;
                 } else {
@@ -93,23 +93,13 @@ export default class Main extends ZepetoScriptBehaviour {
             break;
 
             case GameState.COMPLETE_GAME:
-                this.ShowSuccessWin();
+                if (this.CurrentLevel >= this.Configs.Levels.length) {
+                    this.ShowSuccessWin();
+                } else {
+                    this.ShowLoseWin();
+                }
             break;
-
-            //=====================================================================
-            case GameState.START_UPGRADE_SELECT:
-                this._gameState = GameState.CONTINUE_UPGRADE_SELECT;
-            break;
-            case GameState.CONTINUE_UPGRADE_SELECT:
-            
-            break;
-            case GameState.END_UPGRADE_SELECT:
-                this._gameState = GameState.START_FIGHTING;
-            break;
-            //=====================================================================
         }
-
-        //console.log(`State: ${GameState[this._gameState]}` );
     }
 
     SetGameState(gameState : GameState) {
@@ -123,16 +113,15 @@ export default class Main extends ZepetoScriptBehaviour {
             this.LocalPlayer = ZepetoPlayers.instance.LocalPlayer;
             this.LocalPlayer.zepetoPlayer.character.gameObject.tag = "PLAYER";
 
+            //setting up player collider (need this for player being hit by projectiles)
             const collider : CapsuleCollider = this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent<CapsuleCollider>();
             collider.isTrigger = true;
             collider.height = 2;
 
-            const enemyComponent : EnemyComponent = this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent<EnemyComponent>();
+            const enemyComponent : EntityComponent = this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent<EntityComponent>();
             enemyComponent.EntityType = EntityType.PLAYER;
             
             const healthComponent : HealthComponent = this.LocalPlayer.zepetoPlayer.character.gameObject.AddComponent<HealthComponent>();
-
-            this.SetGameState(GameState.START_FIGHTING);
 
             const weaponGO : GameObject = GameObject.Instantiate(Resources.Load("PlayerWeapon"), 
             this.LocalPlayer.zepetoPlayer.character.gameObject.transform.position, 
@@ -148,6 +137,8 @@ export default class Main extends ZepetoScriptBehaviour {
             healthComponent.HealthText = healthComponent.HealthUI.GetComponentInChildren<TextMeshProUGUI>();
 
             this.ZepetoCamera = ZepetoPlayers.instance.GetComponentInChildren<Camera>();
+
+            this.SetGameState(GameState.START_FIGHTING);
         });
     }
 }

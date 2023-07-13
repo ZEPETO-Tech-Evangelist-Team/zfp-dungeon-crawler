@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: e4029f429c5590a4595809dfd28e58c6
+importerOverride: ZEPETO.Script.Compiler:ZEPETO.Script:TypescriptAssetImporter
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: -1123457745, guid: 54cf806323ffe4418a4ce4cc63fe6b9d, type: 3}
+  isAssemblyDeclarations: 0
+  assembly: 
+  generateAllTypes: 1
+  types: []
+  generateWrapper: 0
+  overrideWrapperTypes: 0
+  wrapperTypes: []
+  WrapperFilters: []
+  wrapperOutputDirectory: Generated
+  compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
+    { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nclass
+    EntityComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    constructor()
+    {\r\n        super(...arguments);\r\n        this.Id = null;\r\n        this.EntityType
+    = null;\r\n    }\r\n    Init(id) {\r\n        this.Id = id;\r\n    }\r\n}\r\nexports.default
+    = EntityComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiRW50aXR5Q29tcG9uZW50LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiRW50aXR5Q29tcG9uZW50LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsaURBQXFEO0FBR3JELE1BQXFCLGVBQWdCLFNBQVEscUNBQXFCO0lBQWxFOztRQUNXLE9BQUUsR0FBWSxJQUFJLENBQUM7UUFDbkIsZUFBVSxHQUFnQixJQUFJLENBQUM7SUFLMUMsQ0FBQztJQUhHLElBQUksQ0FBQyxFQUFXO1FBQ1osSUFBSSxDQUFDLEVBQUUsR0FBRyxFQUFFLENBQUM7SUFDakIsQ0FBQztDQUNKO0FBUEQsa0NBT0MifQ==","assetPath":"Assets/Scripts/EntityComponent.ts","manifest":{"properties":[{"assembly":"mscorlib","name":"Id","type":"System.Single","isArray":false,"initValue":[],"enumKeys":[],"enumValues":[],"attributes":[]},{"assembly":"","name":"EntityType","type":"EntityType","isArray":false,"initValue":[],"enumKeys":["NONE","PLAYER","ENEMY"],"enumValues":["0","1","2"],"attributes":[]}],"name":"EntityComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 01f780c4ce82304afe112bb333c293da
+  onlyWriteTrigger: 0
