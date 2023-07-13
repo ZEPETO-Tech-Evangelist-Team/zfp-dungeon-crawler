@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 411622351}
   - component: {fileID: 411622352}
   m_Layer: 0
-  m_Name: DungeonLevel_TwoBlockAe
+  m_Name: DungeonLevel_TwoBlockA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4182,7 +4182,7 @@ GameObject:
   - component: {fileID: 797770170}
   - component: {fileID: 797770171}
   m_Layer: 0
-  m_Name: DungeonLevel_OneBlockAs
+  m_Name: DungeonLevel_OneBlockA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6349,11 +6349,14 @@ MonoBehaviour:
   script:
     keys:
     - LevelGameObjects
+    - EnemyComponentsCount
     unityValues:
+    - {fileID: 0}
     - {fileID: 0}
     values:
     - '{"type":"ZEPETO.Script.ZepetoScriptSerializer+ArrayInfo, ZEPETO.Script","value":"{\"offset\":0,\"length\":3,\"type\":\"UnityEngine.Object,
       UnityEngine.CoreModule\",\"isUnity\":true}"}'
+    - '{"type":"System.Single, mscorlib","value":"0"}'
     unityArrayValues:
     - {fileID: 1482750860}
     - {fileID: 411622350}

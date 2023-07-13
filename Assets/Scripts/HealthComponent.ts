@@ -1,11 +1,11 @@
 import { Camera, Collider, Debug, GameObject, Vector3 } from 'UnityEngine';
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import EnemyComponent from './EnemyComponent';
-import Main from '../Main';
 import ProjectileComponent from './ProjectileComponent';
 import SharpComponent from './SharpComponent';
 import { EntityType, GameState, PLAYER_STARTING_HEALTH, PROJECTILE_DAMAGE, SHARP_DAMAGE } from './Configs';
 import { TextMeshProUGUI } from 'TMPro';
+import Main from './Main';
 
 export default class HealthComponent extends ZepetoScriptBehaviour {
 
@@ -28,7 +28,6 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
     }
 
     OnTriggerEnter(other : Collider) {
-        Debug.LogError("player hit: " + this.gameObject.name);
         if (other.gameObject.tag === "PROJECTILE") {
 
             //check for friendly fire
@@ -53,7 +52,6 @@ export default class HealthComponent extends ZepetoScriptBehaviour {
     }
 
     Destroy() {
-        Debug.LogError("Destroy");
         switch (this._enemyComponent.EntityType) {
             case EntityType.ENEMY:
                 GameObject.Destroy(this.gameObject);

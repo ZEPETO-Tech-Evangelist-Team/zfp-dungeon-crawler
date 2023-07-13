@@ -3,9 +3,9 @@ import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import LevelComponent from './LevelComponent';
 import { ZepetoPlayers } from 'ZEPETO.Character.Controller';
 import { DoorState, EnemyType, GameState, LevelType, PLAYER_STARTING_HEALTH } from './Configs';
-import Main from '../Main';
 import EnemyComponent from './EnemyComponent';
 import HealthComponent from './HealthComponent';
+import Main from './Main';
 
 export default class LevelManager extends ZepetoScriptBehaviour {
     public LevelGameObjects : GameObject[] = null;
@@ -14,6 +14,7 @@ export default class LevelManager extends ZepetoScriptBehaviour {
     private _currentLevelComponentIndex: number = null;
 
     public EnemyComponents : Map<number, EnemyComponent> = null;
+    public EnemyComponentsCount : number = 0;
 
     private _hasKilledAllEnemies : boolean = null;
 
@@ -38,6 +39,7 @@ export default class LevelManager extends ZepetoScriptBehaviour {
     }
 
     CustomUpdate() {
+        this.EnemyComponentsCount = this.EnemyComponents.size;
         if (this._hasKilledAllEnemies === false) {
             this.CheckIfAllEnemiesKilled();
         }
@@ -68,7 +70,6 @@ export default class LevelManager extends ZepetoScriptBehaviour {
             }
             if (aliveCount === 0) {
                 this._hasKilledAllEnemies = true;
-                Debug.LogError("Killed All Enemies");
                 this._levelComponents[this._currentLevelComponentIndex].GateComponent.SetClose();
                 this._levelComponents[this._currentLevelComponentIndex].GateComponent.SetDoorState(DoorState.OPEN);
             }

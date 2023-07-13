@@ -1,13 +1,12 @@
 import { Debug, BoxCollider, Camera, CapsuleCollider, GameObject, Quaternion, Resources, Vector3 } from 'UnityEngine';
 import { LocalPlayer, SpawnInfo, ZepetoPlayers } from 'ZEPETO.Character.Controller'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
-import Configs, { EntityType, GameState } from './Scripts/Configs';
-import LevelManager from './Scripts/LevelManager';
 import { WorldService } from 'ZEPETO.World';
-import EnemyComponent from './Scripts/EnemyComponent';
-import HealthComponent from './Scripts/HealthComponent';
 import { TextMeshProUGUI } from 'TMPro';
-
+import Configs, { GameState, EntityType } from './Configs';
+import EnemyComponent from './EnemyComponent';
+import HealthComponent from './HealthComponent';
+import LevelManager from './LevelManager';
 export default class Main extends ZepetoScriptBehaviour {
     public  static instance : Main = null;
     public Configs : Configs = null;
@@ -86,8 +85,6 @@ export default class Main extends ZepetoScriptBehaviour {
             break;
             case GameState.END_FIGHTING:
                 this.CurrentLevel ++;
-                Debug.LogError("COUNT: " + this.CurrentLevel);
-                Debug.LogError(this.Configs.Levels.length);
                 if (this.CurrentLevel >= this.Configs.Levels.length) {
                     this._gameState = GameState.COMPLETE_GAME;
                 } else {
@@ -97,7 +94,6 @@ export default class Main extends ZepetoScriptBehaviour {
 
             case GameState.COMPLETE_GAME:
                 this.ShowSuccessWin();
-                Debug.LogError("GAME END !!!!!");
             break;
 
             //=====================================================================

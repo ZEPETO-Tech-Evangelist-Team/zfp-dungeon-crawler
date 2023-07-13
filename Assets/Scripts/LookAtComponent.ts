@@ -2,8 +2,8 @@ import { Vector3 } from 'UnityEngine';
 import { ZepetoPlayers } from 'ZEPETO.Character.Controller'
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { EntityType } from './Configs';
-import Main from '../Main';
 import EnemyComponent from './EnemyComponent';
+import Main from './Main';
 
 export default class LookAtComponent extends ZepetoScriptBehaviour {
     public LookAtType : EntityType = null;
@@ -30,9 +30,9 @@ export default class LookAtComponent extends ZepetoScriptBehaviour {
                             distanceToCompare = distance;
                             closestEnemyComponent = element;
                         }
+                        this.transform.LookAt(closestEnemyComponent.transform.position, new Vector3(0,1,0));
                     }
                 });
-                this.transform.LookAt(closestEnemyComponent.transform.position, new Vector3(0,1,0));
                 break;
     
         }

@@ -20,9 +20,9 @@ ScriptedImporter:
   wrapperOutputDirectory: Generated
   compiledResult: '{"source":"\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\",
     { value: true });\r\nconst ZEPETO_Script_1 = require(\"ZEPETO.Script\");\r\nconst
-    Configs_1 = require(\"./Configs\");\r\nconst Main_1 = require(\"../Main\");\r\nclass
+    Configs_1 = require(\"./Configs\");\r\nconst Main_1 = require(\"./Main\");\r\nclass
     LevelEndComponent extends ZEPETO_Script_1.ZepetoScriptBehaviour {\r\n    OnTriggerEnter(other)
     {\r\n        if (other.gameObject.tag === \"PLAYER\") {\r\n            Main_1.default.instance.SetGameState(Configs_1.GameState.END_FIGHTING);\r\n       
-    }\r\n    }\r\n}\r\nexports.default = LevelEndComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGV2ZWxFbmRDb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJMZXZlbEVuZENvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUNBLGlEQUFxRDtBQUNyRCx1Q0FBc0M7QUFDdEMsa0NBQTJCO0FBRTNCLE1BQXFCLGlCQUFrQixTQUFRLHFDQUFxQjtJQUVoRSxjQUFjLENBQUMsS0FBZ0I7UUFFM0IsSUFBSSxLQUFLLENBQUMsVUFBVSxDQUFDLEdBQUcsS0FBSyxRQUFRLEVBQUU7WUFDbkMsY0FBSSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsbUJBQVMsQ0FBQyxZQUFZLENBQUMsQ0FBQztTQUN0RDtJQUNMLENBQUM7Q0FFSjtBQVRELG9DQVNDIn0=","assetPath":"Assets/Scripts/LevelEndComponent.ts","manifest":{"properties":[],"name":"LevelEndComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
-  typescriptHash: 74ba5d55fbccd45b42823f2c74176890
+    }\r\n    }\r\n}\r\nexports.default = LevelEndComponent;\r\n//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiTGV2ZWxFbmRDb21wb25lbnQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJMZXZlbEVuZENvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUNBLGlEQUFxRDtBQUNyRCx1Q0FBc0M7QUFDdEMsaUNBQTBCO0FBRTFCLE1BQXFCLGlCQUFrQixTQUFRLHFDQUFxQjtJQUVoRSxjQUFjLENBQUMsS0FBZ0I7UUFFM0IsSUFBSSxLQUFLLENBQUMsVUFBVSxDQUFDLEdBQUcsS0FBSyxRQUFRLEVBQUU7WUFDbkMsY0FBSSxDQUFDLFFBQVEsQ0FBQyxZQUFZLENBQUMsbUJBQVMsQ0FBQyxZQUFZLENBQUMsQ0FBQztTQUN0RDtJQUNMLENBQUM7Q0FFSjtBQVRELG9DQVNDIn0=","assetPath":"Assets/Scripts/LevelEndComponent.ts","manifest":{"properties":[],"name":"LevelEndComponent","description":"","hasAnimatorMove":false},"isCompiled":true}'
+  typescriptHash: 8b4f38bd6da8e10920652cebbbf9b03f
   onlyWriteTrigger: 0

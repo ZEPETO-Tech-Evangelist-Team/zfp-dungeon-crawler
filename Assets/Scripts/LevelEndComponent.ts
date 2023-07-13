@@ -1,7 +1,7 @@
 import { Collider, Collision, Debug } from 'UnityEngine';
 import { ZepetoScriptBehaviour } from 'ZEPETO.Script'
 import { GameState } from './Configs';
-import Main from '../Main';
+import Main from './Main';
 
 export default class LevelEndComponent extends ZepetoScriptBehaviour {
 
